@@ -1,4 +1,4 @@
-from submission_cleaner import SubmissionCleaner
+from text_cleaner import TextCleaner as Cleaner
 from collections import Counter
 import re
 import enchant
@@ -8,7 +8,7 @@ from random import shuffle
 submissions_string = open('./submissions.txt').read()
 
 # lower case and remove punctuation
-submissions_string = SubmissionCleaner.lowercase_and_remove_punctuation(submissions_string)
+submissions_string = Cleaner.lowercase_and_remove_punctuation(submissions_string)
 
 # get list of all words
 submission_words = re.sub("[^\w]", " ", submissions_string).split()
@@ -28,7 +28,7 @@ with open("./data/word_counts.txt", "w") as file:
         file.write('%s : %d \n' % (tuple[0], tuple[1]))
 
 # combine similar words using lemmatization
-lemmatized = SubmissionCleaner.combine_similar_words(filtered_word_list)
+lemmatized = Cleaner.combine_similar_words(filtered_word_list)
 lemmatized_word_counts = Counter(lemmatized)
 print "Distinct words after lemmatization:", len(lemmatized_word_counts)
 

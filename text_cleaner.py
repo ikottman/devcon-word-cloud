@@ -2,7 +2,7 @@ from nltk.stem import WordNetLemmatizer
 import string
 
 
-class SubmissionCleaner:
+class TextCleaner:
     @staticmethod
     def combine_similar_words(words_list):
         lemmatizer = WordNetLemmatizer()
