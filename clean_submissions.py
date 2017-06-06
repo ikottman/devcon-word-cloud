@@ -1,7 +1,7 @@
 from text_cleaner import TextCleaner as Cleaner
 from collections import Counter
 import re
-
+import spacy
 from random import shuffle
 
 # read all submissions into a single string
@@ -13,6 +13,16 @@ submissions_string = Cleaner.lowercase_and_remove_punctuation(submissions_string
 # get list of all words
 submission_words = re.sub("[^\w]", " ", submissions_string).split()
 print "Total words:", len(submission_words)
+
+nlp = spacy.load('en')
+doc = nlp('Hello world, this is a sentence of great and terrible importance.')
+
+print "Parts of speech"
+for d in doc:
+    print doc.pos
+
+
+
 
 # filter out common words to reduce noise
 stopwords = open('./resources/stopwords.txt').read()
